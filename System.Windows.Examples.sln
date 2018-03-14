@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BAB29DFD-F022-424D-8970-5CBB692C9519}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{50F2CF43-FAAF-440F-B021-9097EA3E6F2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Windows.Mvvm", "src\common\System.Windows.Mvvm\System.Windows.Mvvm.csproj", "{7BE018F4-7C06-4C0F-AA8C-9712EA16166A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressBarExample", "src\ProgressBarExample\ProgressBarExample.csproj", "{B6F40A58-CAEB-4C1B-8682-872BFA04481D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration", "{F34EF3D7-080F-434F-A006-1B46FF2F0AE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Integration.Wpf", "src\integration\Autofac.Integration.Wpf\Autofac.Integration.Wpf.csproj", "{042848D4-2022-4BF5-80A1-C8DB99D2ED5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BE018F4-7C06-4C0F-AA8C-9712EA16166A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BE018F4-7C06-4C0F-AA8C-9712EA16166A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BE018F4-7C06-4C0F-AA8C-9712EA16166A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BE018F4-7C06-4C0F-AA8C-9712EA16166A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F40A58-CAEB-4C1B-8682-872BFA04481D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F40A58-CAEB-4C1B-8682-872BFA04481D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F40A58-CAEB-4C1B-8682-872BFA04481D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F40A58-CAEB-4C1B-8682-872BFA04481D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{042848D4-2022-4BF5-80A1-C8DB99D2ED5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042848D4-2022-4BF5-80A1-C8DB99D2ED5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042848D4-2022-4BF5-80A1-C8DB99D2ED5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042848D4-2022-4BF5-80A1-C8DB99D2ED5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50F2CF43-FAAF-440F-B021-9097EA3E6F2F} = {BAB29DFD-F022-424D-8970-5CBB692C9519}
+		{7BE018F4-7C06-4C0F-AA8C-9712EA16166A} = {50F2CF43-FAAF-440F-B021-9097EA3E6F2F}
+		{B6F40A58-CAEB-4C1B-8682-872BFA04481D} = {BAB29DFD-F022-424D-8970-5CBB692C9519}
+		{F34EF3D7-080F-434F-A006-1B46FF2F0AE8} = {BAB29DFD-F022-424D-8970-5CBB692C9519}
+		{042848D4-2022-4BF5-80A1-C8DB99D2ED5A} = {F34EF3D7-080F-434F-A006-1B46FF2F0AE8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CABEE36-8CB2-4431-9E23-33D6FAECBA3B}
+	EndGlobalSection
+EndGlobal
