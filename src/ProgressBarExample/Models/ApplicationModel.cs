@@ -36,20 +36,19 @@ namespace ProgressBarExample.Models
 			StatusChanged?.Invoke(false);
 
 			AddLogRecord("Switching completed...");
-
-			var rnd = new Random();
-
-			double maximum = 0.0, current = 0.0;
-
+			
+			double maximum = 100.0, current = 0.0;
+			
 			while (!cancellationToken.IsCancellationRequested)
 			{
 				await Task.Delay(3000).ConfigureAwait(false);
 
 				if (cancellationToken.IsCancellationRequested) break;
 
-				var nextValue = 30.0 * rnd.NextDouble();
-				maximum += nextValue;
-				current += (2.0 * nextValue * rnd.NextDouble());
+				if (current >= 0.8 * maximum)
+					maximum += 8.0;
+
+				current += 8.0;
 
 				AddLogRecord("Updating progress values...");
 

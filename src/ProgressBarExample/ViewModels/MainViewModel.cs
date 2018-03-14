@@ -119,6 +119,11 @@ namespace ProgressBarExample.ViewModels
 		private void ApplicationModelOnStatusChanged(bool isIndeterminate)
 		{
 			PrepareProcessing = isIndeterminate;
+			if (!isIndeterminate)
+			{
+				MaxProgress = 1;
+				CurrentProgress = 0;
+			}
 		}
 
 		private void ApplicationModelOnProgressChanged(double maximum, double current)

@@ -3,13 +3,4 @@
 				  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				  Background="{DynamicResource DefaultBackgroundBrush}"
 				  WindowStartupLocation="CenterScreen"
-				  WindowState="Normal">
-
-	<WindowChrome.WindowChrome>
-		<WindowChrome CaptionHeight="36"
-					  GlassFrameThickness="1.0"
-					  ResizeBorderThickness="4.0"
-					  UseAeroCaptionButtons="True" />
-	</WindowChrome.WindowChrome>
-
-</NavigationWindow>
+				  WindowState="Normal" />
