@@ -19,6 +19,7 @@ namespace System.Windows.Mvvm
 
 			view.DataContext = this;
 			view.Loaded += HandleViewLoaded;
+			view.Unloaded += HandleViewUnloaded;
 		}
 
 		private void HandleViewLoaded(object sender, RoutedEventArgs args)

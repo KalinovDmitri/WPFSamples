@@ -19,7 +19,7 @@ namespace ProgressBarExample.Models
 			return Task.Run(async () =>
 			{
 				await ProcessDataAsync(cancellationToken).ConfigureAwait(false);
-			});
+			}, cancellationToken);
 		}
 
 		private async Task ProcessDataAsync(CancellationToken cancellationToken)
