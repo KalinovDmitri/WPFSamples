@@ -6,6 +6,9 @@ using System.Windows.Navigation;
 using Autofac;
 using Autofac.Integration.Wpf;
 
+using MahApps.Metro;
+using MahApps.Metro.Controls;
+
 using ProgressBarExample.Models;
 using ProgressBarExample.ViewModels;
 using ProgressBarExample.Views;
@@ -18,9 +21,8 @@ namespace ProgressBarExample
 		internal static int Main(string[] args)
 		{
 			var rootWindow = new MainWindow();
-			var builder = BuildContainer(rootWindow.NavigationService);
 
-			using (IContainer container = builder.Build())
+			using (IContainer container = BuildContainer(rootWindow.NavigationService))
 			{
 				container.Resolve<MainApplication>().Run(rootWindow);
 			}
@@ -28,7 +30,7 @@ namespace ProgressBarExample
 			return 0;
 		}
 
-		private static ContainerBuilder BuildContainer(NavigationService navigationService)
+		private static IContainer BuildContainer(NavigationService navigationService)
 		{
 			var builder = new ContainerBuilder();
 
@@ -41,7 +43,7 @@ namespace ProgressBarExample
 
 			builder.Bind<MainViewModel, MainView>();
 
-			return builder;
+			return builder.Build();
 		}
 	}
 }

@@ -10,6 +10,7 @@ namespace ProgressBarExample.ViewModels
 {
 	public class MainViewModel : ViewModelBase
 	{
+		private readonly INavigationService _navigationService;
 		private readonly ApplicationModel _applicationModel;
 
 		private bool _prepareProcessing;
@@ -88,8 +89,9 @@ namespace ProgressBarExample.ViewModels
 		private ICommand _startCommand;
 		public ICommand StartProcessingCommand => _startCommand ?? (_startCommand = new DelegateCommand(StartStopProcessing));
 
-		public MainViewModel(ApplicationModel applicationModel)
+		public MainViewModel(INavigationService navigationService, ApplicationModel applicationModel)
 		{
+			_navigationService = navigationService;
 			_applicationModel = applicationModel;
 		}
 
