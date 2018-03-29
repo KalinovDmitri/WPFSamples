@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Mvvm;
 
+using MahApps.Metro;
+
 using ProgressBarExample.ViewModels;
 
 namespace ProgressBarExample
@@ -20,6 +22,10 @@ namespace ProgressBarExample
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);
+
+			ThemeManager.ChangeAppStyle(this,
+				ThemeManager.GetAccent("Blue"),
+				ThemeManager.GetAppTheme("BaseLight"));
 
 			_navigationService.NavigateToViewModel<MainViewModel>();
 		}

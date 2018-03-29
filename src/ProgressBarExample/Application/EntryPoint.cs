@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Mvvm;
 using System.Windows.Navigation;
 
@@ -20,9 +21,13 @@ namespace ProgressBarExample
 		[STAThread]
 		internal static int Main(string[] args)
 		{
-			var rootWindow = new MainWindow();
+			var rootFrame = new Frame();
+			var rootWindow = new MainWindow
+			{
+				Content = rootFrame
+			};
 
-			using (IContainer container = BuildContainer(rootWindow.NavigationService))
+			using (IContainer container = BuildContainer(rootFrame.NavigationService))
 			{
 				container.Resolve<MainApplication>().Run(rootWindow);
 			}
