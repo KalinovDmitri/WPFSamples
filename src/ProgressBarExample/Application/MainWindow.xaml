@@ -1,6 +1,28 @@
-﻿<NavigationWindow x:Class="ProgressBarExample.Views.MainWindow"
-				  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-				  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-				  Background="{DynamicResource DefaultBackgroundBrush}"
-				  WindowStartupLocation="CenterScreen"
-				  WindowState="Normal" />
+﻿<mahapps:MetroWindow x:Class="ProgressBarExample.Views.MainWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="0"
+                     WindowStartupLocation="CenterScreen"
+                     WindowState="Normal"
+                     WindowTransitionsEnabled="False">
+	<mahapps:MetroWindow.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</mahapps:MetroWindow.Resources>
+
+	<mahapps:MetroWindow.LeftWindowCommands>
+		<mahapps:WindowCommands>
+			<Button x:Name="navigateBack" Content="back" />
+		</mahapps:WindowCommands>
+	</mahapps:MetroWindow.LeftWindowCommands>
+</mahapps:MetroWindow>

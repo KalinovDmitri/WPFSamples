@@ -16,6 +16,8 @@ namespace ProgressBarExample.Models
 
 		public Task StartProcessAsync(CancellationToken cancellationToken)
 		{
+			AddLogRecord("Enter to StartProcessAsync...");
+
 			return Task.Run(async () =>
 			{
 				await ProcessDataAsync(cancellationToken).ConfigureAwait(false);
@@ -26,7 +28,7 @@ namespace ProgressBarExample.Models
 		{
 			if (cancellationToken.IsCancellationRequested) return;
 
-			AddLogRecord("Entering to ProcessDataAsync...");
+			AddLogRecord("Enter to ProcessDataAsync...");
 
 			StatusChanged?.Invoke(true);
 			await Task.Delay(3000).ConfigureAwait(false);
@@ -61,9 +63,9 @@ namespace ProgressBarExample.Models
 			var currentDate = DateTime.UtcNow;
 			var threadId = Thread.CurrentThread.ManagedThreadId;
 
-			string result = string.Format("{0:u} [thread #{1}]: {2}\r\n", currentDate, threadId, message);
+			string record = string.Format("{0:u} [thread #{1}]: {2}\r\n", currentDate, threadId, message);
 
-			LogRecordCreated?.Invoke(result);
+			LogRecordCreated?.Invoke(record);
 		}
 	}
 }

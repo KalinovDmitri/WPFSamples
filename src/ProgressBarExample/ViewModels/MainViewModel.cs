@@ -10,6 +10,7 @@ namespace ProgressBarExample.ViewModels
 {
 	public class MainViewModel : ViewModelBase
 	{
+		private readonly INavigationService _navigationService;
 		private readonly ApplicationModel _applicationModel;
 
 		private bool _prepareProcessing;
@@ -88,8 +89,9 @@ namespace ProgressBarExample.ViewModels
 		private ICommand _startCommand;
 		public ICommand StartProcessingCommand => _startCommand ?? (_startCommand = new DelegateCommand(StartStopProcessing));
 
-		public MainViewModel(ApplicationModel applicationModel)
+		public MainViewModel(INavigationService navigationService, ApplicationModel applicationModel)
 		{
+			_navigationService = navigationService;
 			_applicationModel = applicationModel;
 		}
 
@@ -134,6 +136,8 @@ namespace ProgressBarExample.ViewModels
 
 		private async void StartStopProcessing()
 		{
+			AddLogRecord("Enter to StartStopProcessing...");
+
 			if (_processingTask != null && _cancellationSource != null && !_cancellationSource.IsCancellationRequested)
 			{
 				_cancellationSource.Cancel();
@@ -150,6 +154,16 @@ namespace ProgressBarExample.ViewModels
 				ProcessingStarted = true;
 				RunButtonText = "Stop";
 			}
+		}
+
+		private void AddLogRecord(string message)
+		{
+			var currentDate = DateTime.UtcNow;
+			var threadId = Thread.CurrentThread.ManagedThreadId;
+
+			string record = string.Format("{0:u} [thread #{1}]: {2}\r\n", currentDate, threadId, message);
+
+			Log += record;
 		}
 	}
 }

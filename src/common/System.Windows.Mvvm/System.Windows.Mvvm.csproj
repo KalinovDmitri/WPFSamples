@@ -54,7 +54,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\InstanceLifetime.cs" />
     <Compile Include="Abstractions\IView.cs" />
     <Compile Include="Abstractions\IViewAware.cs" />
     <Compile Include="Abstractions\INavigationService.cs" />

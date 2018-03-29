@@ -41,12 +41,14 @@
 		<Button Grid.Row="0"
 				Grid.Column="1"
 				MinWidth="120"
-				MinHeight="20"
+				MinHeight="30"
 				Margin="5"
+				HorizontalContentAlignment="Center"
 				Command="{Binding StartProcessingCommand}"
 				Content="{Binding RunButtonText}"
 				FontSize="16"
-				Foreground="White" />
+				Foreground="White"
+				Style="{DynamicResource TealButtonStyle}" />
 
 		<TextBox Grid.Row="1"
 				 Grid.Column="0"

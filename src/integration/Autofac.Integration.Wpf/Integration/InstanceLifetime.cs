@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace System.Windows.Mvvm
+namespace Autofac.Integration.Wpf
 {
 	public enum InstanceLifetime
 	{

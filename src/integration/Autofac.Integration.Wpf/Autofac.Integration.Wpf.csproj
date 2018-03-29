@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Integration\DefaultNavigationService.cs" />
+    <Compile Include="Integration\InstanceLifetime.cs" />
     <Compile Include="Integration\RegistrationExtensions.cs" />
     <Compile Include="Integration\ViewModelActivator.cs" />
   </ItemGroup>
