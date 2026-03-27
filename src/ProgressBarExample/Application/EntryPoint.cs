@@ -1,18 +1,11 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Mvvm;
-using System.Windows.Navigation;
-
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.Wpf;
-
-using MahApps.Metro;
-using MahApps.Metro.Controls;
-
 using ProgressBarExample.Models;
 using ProgressBarExample.ViewModels;
 using ProgressBarExample.Views;
+using System;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace ProgressBarExample
 {

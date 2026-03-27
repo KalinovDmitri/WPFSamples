@@ -1,10 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using Autofac.Builder;
+using Autofac.Core;
+using System;
 using System.Windows.Mvvm;
 using System.Windows.Navigation;
-
-using Autofac.Builder;
-using Autofac.Core;
 
 namespace Autofac.Integration.Wpf
 {
@@ -13,7 +11,9 @@ namespace Autofac.Integration.Wpf
 		public static void RegisterNavigationService(this ContainerBuilder builder, NavigationService navigationService)
 		{
 			builder.RegisterInstance(navigationService);
-			builder.Register(CreateNavigationService)
+
+			builder
+				.Register(CreateCustomNavigationService)
 				.As<INavigationService>()
 				.SingleInstance();
 		}
@@ -22,21 +22,28 @@ namespace Autofac.Integration.Wpf
 			InstanceLifetime viewModelLifetime = InstanceLifetime.Single,
 			InstanceLifetime viewLifetime = InstanceLifetime.Single) where TViewModel : IViewModel where TView : IView
 		{
-			var viewBuilder = builder.RegisterType<TView>()
+			builder
+				.RegisterType<TView>()
 				.As<IView>()
-				.AsSelf();
-			ApplyInstanceLifetime(viewBuilder, viewLifetime);
+				.AsSelf()
+				.ApplyInstanceLifetime(viewLifetime);
 
-			var activator = new ViewModelActivator<TViewModel, TView>();
-
-			var viewModelBuilder = builder.RegisterType<TViewModel>()
+			builder
+				.RegisterType<TViewModel>()
 				.AsImplementedInterfaces()
 				.AsSelf()
-				.OnActivating(activator.Activate);
-			ApplyInstanceLifetime(viewModelBuilder, viewModelLifetime);
+				.ApplyInstanceLifetime(viewModelLifetime)
+				.OnActivating(HandleViewModelActivating);
+
+			void HandleViewModelActivating(IActivatingEventArgs<TViewModel> args)
+			{
+				IView boundedView = args.Context.Resolve<TView>();
+
+				args.Instance.AttachView(boundedView);
+			}
 		}
-		
-		private static INavigationService CreateNavigationService(IComponentContext context)
+
+		private static INavigationService CreateCustomNavigationService(IComponentContext context)
 		{
 			var lifetimeScope = context.Resolve<ILifetimeScope>();
 			var navigationService = context.Resolve<NavigationService>();
@@ -45,8 +52,8 @@ namespace Autofac.Integration.Wpf
 			return service;
 		}
 
-		private static void ApplyInstanceLifetime<TLimit, TActivatorData, TRegistrationStyle>(
-			IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> builder,
+		private static IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> ApplyInstanceLifetime<TLimit, TActivatorData, TRegistrationStyle>(
+			this IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> builder,
 			InstanceLifetime instanceLifetime)
 		{
 			if (builder == null)
@@ -66,8 +73,13 @@ namespace Autofac.Integration.Wpf
 					builder.InstancePerDependency();
 					break;
 				default:
-					throw new ArgumentOutOfRangeException(nameof(instanceLifetime), "Unknown lifetime type.");
+					throw new ArgumentOutOfRangeException(
+						paramName: nameof(instanceLifetime),
+						actualValue: instanceLifetime,
+						message: "Unknown lifetime type.");
 			}
+
+			return builder;
 		}
 	}
 }

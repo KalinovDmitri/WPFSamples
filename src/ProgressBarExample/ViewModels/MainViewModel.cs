@@ -143,8 +143,11 @@ namespace ProgressBarExample.ViewModels
 				_cancellationSource.Cancel();
 				await _processingTask;
 
-				ProcessingStarted = false;
+				//ProcessingStarted = false;
 				RunButtonText = "Run";
+
+				MaxProgress = 1;
+				CurrentProgress = 0;
 			}
 			else
 			{
